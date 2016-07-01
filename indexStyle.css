@@ -1,0 +1,30 @@
+body {
+    background-image: url("images/video-reel.jpg");
+    background-size: 100%;
+    align-content: flex-end;
+    text-align: right;
+}
+
+#txt {
+    padding-right: 10%;
+    font-style: italic;
+}
+
+#buttons {
+    padding-right: 10%;
+    align-content: center;
+}
+
+.button:hover {
+    box-shadow: 0px 0px 0px 1px black;
+}
+
+.button {
+    border-radius: 5px;
+}
+
+#title {
+    padding-right: 5%;
+    text-decoration: underline;
+}
+
