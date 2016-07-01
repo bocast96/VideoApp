@@ -26,7 +26,8 @@ $sql = "CREATE TABLE users (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(50) NOT NULL,
 password VARCHAR(50) NOT NULL,
-profile_pic LONGBLOB
+profile_pic LONGBLOB,
+image_type varchar(512)
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -35,8 +36,9 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error, "<br>";
 }
 
-// creates a sample table video table
-$sql = "CREATE TABLE sample (
+// creates the video table
+$sql = "CREATE TABLE videos (
+userId int NOT NULL, 
 title VARCHAR(50),
 genre ENUM('music','news','sports','DIY','comedy','art','science','misc') NOT NULL,
 author VARCHAR(20),
