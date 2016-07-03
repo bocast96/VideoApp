@@ -62,4 +62,94 @@ class DAO {
 
         return $result;
     }
+
+    /**
+     * @param $userId user's id
+     * @param $url video url to store
+     */
+    public function storeVideo ($userId, $title, $genre, $author, $desc, $url) {
+        $conn = $this->setConnection();
+        $date = date('Y-m-d H:i:s');
+        // store new url
+        $query = 
+                "INSERT INTO videos (
+                    userId,
+                    title,
+                    genre,
+                    author,
+                    description,
+                    link,
+                    date_added
+                )
+                 VALUES (
+                     '{$userId}',  
+                     '{$title}', 
+                     '{$genre}', 
+                     '{$author}',
+                     '{$desc}',
+                     '{$url}',
+                     '{$date}' 
+                 )";
+
+        $result =  $conn->query($query);
+        $conn->close();
+
+        if ($result) {
+            return $result;
+        } else{
+            return $query;
+        }
+
+    }
+
+    /**
+     * @param $userId user's id
+     * @param $descriptor value that identifies video. 
+     * can be title string or index integer 
+    */
+    public function fetchVideo ($userId, $descriptor) {
+        $conn = $this->setConnection();
+        $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
+        $query = 
+                "SELECT link 
+                 FROM videos
+                 WHERE userId='{$userId}'
+                 AND '{$column}'='{$descriptor}'";
+        $result = $conn->query($query);
+        $conn->close();
+
+        return $result;
+    }
+
+    /**
+     * @param $userId user's id
+     * @param $descriptor value that identifies video. 
+     * can be title string or index integer 
+    */
+    public function deleteVideo ($userId, $descriptor) {
+        $conn = $this->setConnection();
+        $endIndex = maxVideoIndexForUser ($user);
+        $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
+        $query = 
+                "DELETE FROM videos
+                 WHERE userId='{$userId}'
+                 AND '{$column}'='{$descriptor}'";
+        $result = $conn->query($query);
+        $conn->close();
+
+        return $result;
+    }
+
+    public function getVideosForUser ($userId) {
+        $conn = $this->setConnection();
+        $query = 
+                "SELECT * 
+                 FROM videos
+                 WHERE userId='{$userId}'";
+        $result = $conn->query($query);
+        $conn->close();
+
+        return $result;
+    }
+
 }
