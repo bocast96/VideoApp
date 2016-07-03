@@ -54,21 +54,27 @@ BOD;
 
 function getWelcomePage($img, $user) {
     $body = <<<BOD
-    <form>
+    <!--<form>-->
         <h1>Welcome Back $user</h1>
         <p>
             <table>
                 <tr>
                     <td>$img</td>
                     <td>
-                        <input type='submit' name='goToVids' value='Go to videos'/>
-                        <br><br>
-                        <input type='submit' name='addVids' value='Add New Videos'/>
+                        <form method="post" action="submitVideo.php">
+                            <input type='submit' name='addVids' value='Add to videos'/>
+                        </form>
                     </td>
+                    <td>
+                    <form method="post" action="submitVideo.php">
+                        <input type='submit' name='goToVids' value='Go to videos'/>
+                    </form>
+                    </td>
+
                 </tr>
             </table>
         </p>
-    </form>
+    <!--</form>-->
 BOD;
 
     return $body;

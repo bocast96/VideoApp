@@ -38,7 +38,7 @@ if ($conn->query($sql) === TRUE) {
 
 // creates the video table
 $sql = "CREATE TABLE videos (
-userId int NOT NULL, 
+userId int NOT NULL,
 title VARCHAR(50),
 genre ENUM('music','news','sports','DIY','comedy','art','science','misc') NOT NULL,
 author VARCHAR(20),
