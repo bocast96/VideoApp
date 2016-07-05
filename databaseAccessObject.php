@@ -70,7 +70,7 @@ class DAO {
     public function storeVideo ($userId, $title, $genre, $author, $desc, $url) {
         $conn = $this->setConnection();
         $date = date('Y-m-d H:i:s');
-        // store new url
+        
         $query = 
                 "INSERT INTO videos (
                     userId,
@@ -105,20 +105,21 @@ class DAO {
     /**
      * @param $userId user's id
      * @param $descriptor value that identifies video. 
-     * can be title string or index integer 
+     * @return array of video columns
     */
     public function fetchVideo ($userId, $descriptor) {
         $conn = $this->setConnection();
         $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
         $query = 
-                "SELECT link 
+                "SELECT * 
                  FROM videos
                  WHERE userId='{$userId}'
-                 AND '{$column}'='{$descriptor}'";
+                 AND {$column}='{$descriptor}'";
         $result = $conn->query($query);
         $conn->close();
 
-        return $result;
+        return (($result) ? $result->fetch_array() : $result);
+        //return $query;
     }
 
     /**
