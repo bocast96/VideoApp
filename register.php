@@ -37,18 +37,14 @@ if (isset($_POST['submit'])){
 
 
     $body = <<<BOD
-    <form >
+    <form action="submitVideo.php" method="post">
         <h1>congratulations</h1>
         <p>Your profile has been created. now you can begin storing your favorite videos</p>
         <p>
             Username: $username <br/><br/>
             $image
         </p>
-        <p>
-            <form method="post" action="submitVideo.php">
-                <input type='submit' name='begin' value='Add Videos' />
-            </form>
-        </p>
+        <input type='submit' name='begin' value='Add Videos' />
     </form>
 BOD;
     //todo add transision to start adding videos

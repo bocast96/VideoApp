@@ -66,7 +66,7 @@ function getWelcomePage($img, $user) {
                         </form>
                     </td>
                     <td>
-                    <form method="post" action="submitVideo.php">
+                    <form method="post" action="videoTable.php">
                         <input type='submit' name='goToVids' value='Go to videos'/>
                     </form>
                     </td>

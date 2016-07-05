@@ -129,7 +129,7 @@ class DAO {
     */
     public function deleteVideo ($userId, $descriptor) {
         $conn = $this->setConnection();
-        $endIndex = maxVideoIndexForUser ($user);
+        //$endIndex = maxVideoIndexForUser ($user);
         $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
         $query = 
                 "DELETE FROM videos

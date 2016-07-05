@@ -57,7 +57,7 @@ BOD;
          $dao = new DAO();
          $result = $dao->storeVideo($userId, $title, $genre, $author, $description, $link);
         $body = <<<BOD
-        <form action="index.html">
+        <form action="videoTable.php">
             <p>
                 <h1>Video Uploaded</h1>
             </p>
