@@ -56,20 +56,16 @@ BOD;
 
          $dao = new DAO();
          $result = $dao->storeVideo($userId, $title, $genre, $author, $description, $link);
-
-         $fetch = $dao->fetchVideo($userId, $title);
-         print $fetch;
-
-            $body = <<<BOD
-            <form action="index.html">
-                <p>
-                    <h1>Video Uploaded</h1>
-                </p>
-                <p>
-                <p>
-                    <input type="submit" name="submit"/>
-                </p>
-            </form>
+        $body = <<<BOD
+        <form action="index.html">
+            <p>
+                <h1>Video Uploaded</h1>
+            </p>
+            <p>
+            <p>
+                <input type="submit" name="submit"/>
+            </p>
+        </form>
 BOD;
     
     } else {
