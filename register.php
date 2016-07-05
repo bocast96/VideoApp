@@ -45,7 +45,9 @@ if (isset($_POST['submit'])){
             $image
         </p>
         <p>
-            <input type='submit' name='begin' value='Add Videos' />
+            <form method="post" action="submitVideo.php">
+                <input type='submit' name='begin' value='Add Videos' />
+            </form>
         </p>
     </form>
 BOD;

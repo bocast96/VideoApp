@@ -21,7 +21,7 @@ if (!isset($_POST['submit'])){
             Genre: <br>
             <input type="radio" name="genre" id="genre" value='music'/> Music
             <input type="radio" name="genre" id="genre" value='news'/> News
-            <input type="radio" name="genre" id="genre" value='sports'/> Syorts
+            <input type="radio" name="genre" id="genre" value='sports'/> Sports
             <input type="radio" name="genre" id="genre" value='DIY'/> DIY
             <input type="radio" name="genre" id="genre" value='comedy'/> Comedy
             <input type="radio" name="genre" id="genre" value='art'/> Art
