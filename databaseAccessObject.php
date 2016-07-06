@@ -109,12 +109,11 @@ class DAO {
     */
     public function fetchVideo ($userId, $descriptor) {
         $conn = $this->setConnection();
-        $column = ((gettype($descriptor) == "string") ? "genre" : "userVideoId");
         $query = 
                 "SELECT * 
                  FROM videos
                  WHERE userId='{$userId}'
-                 AND {$column}='{$descriptor}'";
+                 AND title='{$descriptor}'";
         $result = $conn->query($query);
         $conn->close();
 
@@ -129,12 +128,10 @@ class DAO {
     */
     public function deleteVideo ($userId, $descriptor) {
         $conn = $this->setConnection();
-        //$endIndex = maxVideoIndexForUser ($user);
-        $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
         $query = 
                 "DELETE FROM videos
                  WHERE userId='{$userId}'
-                 AND {$column}='{$descriptor}'";
+                 AND title='{$descriptor}'";
         $result = $conn->query($query);
         $conn->close();
 
