@@ -113,12 +113,23 @@ class DAO {
                 "SELECT * 
                  FROM videos
                  WHERE userId='{$userId}'
-                 AND title='{$descriptor}'";
+                 AND genre='{$descriptor}'";
         $result = $conn->query($query);
         $conn->close();
 
-        return (($result) ? $result->fetch_array() : $result);
-        //return $query;
+        return $result;
+    }
+
+    public function fetchVideoAll ($descriptor) {
+        $conn = $this->setConnection();
+        $query =
+            "SELECT * 
+                 FROM videos
+                 WHERE genre='{$descriptor}'";
+        $result = $conn->query($query);
+        $conn->close();
+
+        return $result;
     }
 
     /**
