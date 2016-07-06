@@ -20,7 +20,7 @@ function generatePage($body, $title="YourTube") {
 
     <body>
     <header>
-        <img src="images/home.png" onclick="window.location='index.html'" height="30" width="30"/>
+        <img src="images/home.png" onclick="window.location='login.php'" height="30" width="30"/>
         <hr>
     </header>
             $body

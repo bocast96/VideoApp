@@ -33,6 +33,7 @@ if (isset($_POST['submit'])){
     
     session_start();
     $_SESSION['userId'] = $id;
+    $_SESSION['userName'] = $username;
     $image = "<p><img src=\"imageRetriever.php\" alt=\"Image To Display\" height='200' width='200'/></p>";
 
 

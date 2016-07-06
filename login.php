@@ -7,8 +7,14 @@
  */
 require_once "suppor.php";
 require_once "databaseAccessObject.php";
+session_start();
+if (isset($_SESSION['userId'])){
+    $user = $_SESSION['userName'];
+    $image = "<p><img src=\"imageRetriever.php\" alt=\"Image To Display\" height='200' width='200'/></p>";
+    echo generatePage(getWelcomePage($image, $user));
+}
 
-if (isset($_POST['submitLogin'])) {
+else if (isset($_POST['submitLogin'])) {
     $username = trim($_POST['username']);
     $password = sha1(trim($_POST['psw']));
 
@@ -17,8 +23,9 @@ if (isset($_POST['submitLogin'])) {
 
     if ($result and $result->num_rows > 0){
         $result = $result->fetch_assoc();
-        session_start();
+
         $_SESSION['userId'] = $result['id'];
+        $_SESSION['userName'] = $username;
         $image = "<p><img src=\"imageRetriever.php\" alt=\"Image To Display\" height='200' width='200'/></p>";
 
         echo generatePage(getWelcomePage($image, $username));
@@ -57,18 +64,23 @@ function getWelcomePage($img, $user) {
     <!--<form>-->
         <h1>Welcome Back $user</h1>
         <p>
+        $img
             <table>
                 <tr>
-                    <td>$img</td>
                     <td>
-                        <form method="post" action="submitVideo.php">
+                        <form action="submitVideo.php">
                             <input type='submit' name='addVids' value='Add to videos'/>
                         </form>
                     </td>
                     <td>
-                    <form method="post" action="videoTable.php">
-                        <input type='submit' name='goToVids' value='Go to videos'/>
-                    </form>
+                        <form action="videoTable.php">
+                            <input type='submit' name='goToVids' value='Go to videos'/>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="logout.php">
+                            <input type='submit' name='logout' value='Logout'/>
+                        </form>
                     </td>
 
                 </tr>
