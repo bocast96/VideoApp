@@ -4,25 +4,50 @@ require_once "databaseAccessObject.php";
 session_start();
 $dao = new DAO();
 $id = $_SESSION['userId'];
-
+$genres = array();
 $body = '<h1>Videos</h1>';
 $script = $_SERVER["PHP_SELF"];
 $htmlcode = <<<EOBODY
             <form action="$script" method="post">
             <fieldset>
             <legend><em>Genres</em></legend>
-            <input type="radio" name="genre" value="music">Music
-            <input type="radio" name="genre" value="news">News
-            <input type="radio" name="genre" value="sports">Sports
-            <input type="radio" name="genre" value="DIY">DIY
-            <input type="radio" name="genre" value="comedy">Comedy
-            <input type="radio" name="genre" value="art">Art
-            <input type="radio" name="genre" value="science">Science
-            <input type="radio" name="genre" value="misc">Misc
+            <input type="checkbox" name="music" value="music">Music
+            <input type="checkbox" name="news" value="news">News
+            <input type="checkbox" name="sports" value="sports">Sports
+            <input type="checkbox" name="diy" value="DIY">DIY
+            <input type="checkbox" name="comedy" value="comedy">Comedy
+            <input type="checkbox" name="art" value="art">Art
+            <input type="checkbox" name="science" value="science">Science
+            <input type="checkbox" name="misc" value="misc">Misc
             <input type="submit" name="filter" value="Search"/>
         </fieldset></form><br>
 EOBODY;
 $body = $htmlcode . $body;
+
+if(isset($_POST['music'])){
+    array_push($genres, "music");
+}
+if(isset($_POST['news'])){
+    array_push($genres, "news");
+}
+if(isset($_POST['sports'])){
+    array_push($genres, "sports");
+}
+if(isset($_POST['diy'])){
+    array_push($genres, "DIY");
+}
+if(isset($_POST['comedy'])){
+    array_push($genres, "comedy");
+}
+if(isset($_POST['art'])){
+    array_push($genres, "art");
+}
+if(isset($_POST['science'])){
+    array_push($genres, "science");
+}
+if(isset($_POST['misc'])){
+    array_push($genres, "misc");
+}
 
 if(isset($_POST['all'])){
     $result = $dao->getAllVideos();
@@ -38,14 +63,15 @@ if(isset($_POST['all'])){
                             <input type="submit" value="Go back"/>
                         </form>';
 
-}else if(isset($_POST['genre'])) {
-    $genre = $_POST['genre'];
+}else if((isset($_POST['music']) || isset($_POST['news']) || isset($_POST['sports']) || isset($_POST['diy']) || isset($_POST['comedy'])
+    || isset($_POST['art']) || isset($_POST['science']) || isset($_POST['misc']))) {
+    $genre = "'".implode("','", $genres)."'";
     $result = $dao->fetchVideoAll($genre);
     if ($result and $result->num_rows > 0) {
-        $body .= "Genre: " .$genre;
+        $body .= "Genre(s): " .$genre;
         $body .= createAllTable($result);
     } else {
-        $body .= "Genre: " .$genre. '<br>';
+        $body .= "Genre(s): " .$genre. '<br>';
         $body .= 'You have not added any videos yet. Please add a video. <br><br>';
     }
 

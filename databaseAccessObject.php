@@ -113,7 +113,7 @@ class DAO {
                 "SELECT * 
                  FROM videos
                  WHERE userId='{$userId}'
-                 AND genre='{$descriptor}'";
+                 AND genre IN ({$descriptor})";
         $result = $conn->query($query);
         $conn->close();
 
@@ -125,7 +125,7 @@ class DAO {
         $query =
             "SELECT * 
                  FROM videos
-                 WHERE genre='{$descriptor}'";
+                 WHERE genre IN ({$descriptor})";
         $result = $conn->query($query);
         $conn->close();
 
