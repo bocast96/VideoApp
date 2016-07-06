@@ -54,6 +54,9 @@ function makeLoginPage($msg="") {
             $msg
         </p>
     </form>
+    <form action="index.html" />
+        <input type="submit" value="Return to register">
+    </form>
 BOD;
 
     return $body;
