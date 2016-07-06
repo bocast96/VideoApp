@@ -134,7 +134,7 @@ class DAO {
         $query = 
                 "DELETE FROM videos
                  WHERE userId='{$userId}'
-                 AND '{$column}'='{$descriptor}'";
+                 AND {$column}='{$descriptor}'";
         $result = $conn->query($query);
         $conn->close();
 

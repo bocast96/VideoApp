@@ -63,7 +63,7 @@ BOD;
             </p>
             <p>
             <p>
-                <input type="submit" name="submit"/>
+                <input value="Go To Videos" "type="submit" name="submit"/>
             </p>
         </form>
 BOD;
