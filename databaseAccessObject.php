@@ -150,4 +150,15 @@ class DAO {
         return $result;
     }
 
+    public function getAllVideos(){
+        $conn = $this->setConnection();
+        $query =
+            "SELECT * 
+                 FROM videos";
+        $result = $conn->query($query);
+        $conn->close();
+
+        return $result;
+    }
+
 }

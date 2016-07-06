@@ -68,13 +68,18 @@ function getWelcomePage($img, $user) {
             <table>
                 <tr>
                     <td>
-                        <form action="submitVideo.php">
-                            <input type='submit' name='addVids' value='Add to videos'/>
+                        <form action="submitVideo.php" method="post">
+                            <input type='submit' name='addVids' value='Add a video'/>
                         </form>
                     </td>
                     <td>
-                        <form action="videoTable.php">
-                            <input type='submit' name='goToVids' value='Go to videos'/>
+                        <form action="videoTable.php" method="post">
+                            <input type='submit' name='goToVids' value='See your videos'/>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="videoTable.php" method="post">
+                            <input type='submit' name='all' value='See all videos'/>
                         </form>
                     </td>
                     <td>
