@@ -16,6 +16,7 @@ function generatePage($body, $title="YourTube") {
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>$title</title>
+        <link rel="stylesheet" href="mainStyle.css" type="text/css"/>
     </head>
 
     <body>
@@ -39,6 +40,7 @@ function generatePageJS($body, $js, $title="YourTube") {
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>$title</title>
         <script src="$js"></script>
+        <link rel="stylesheet" href="mainStyle.css" type="text/css"/>
     </head>
 
     <body>
