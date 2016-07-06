@@ -109,7 +109,7 @@ class DAO {
     */
     public function fetchVideo ($userId, $descriptor) {
         $conn = $this->setConnection();
-        $column = ((gettype($descriptor) == "string") ? "title" : "userVideoId");
+        $column = ((gettype($descriptor) == "string") ? "genre" : "userVideoId");
         $query = 
                 "SELECT * 
                  FROM videos

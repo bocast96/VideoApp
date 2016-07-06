@@ -27,7 +27,7 @@ function createTable($videos){
     while($row = mysqli_fetch_row($videos))
     {
         $body .= '<tr><td>'.$row[1].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[2].'</td>
-        <form method="post" action="playVideo.php"><td><input type="hidden" name="video" value="'.$row[5].'"><input type="submit" value="Watch Video"></td>
+        <form method="post" action="playVideo.php"><td><input type="hidden" name="video" value="'.$row[5].'"><input type="submit" value="Watch Video"></td></form>
         <td>'.$row[6].'</td>
         <form method="post" action="delete.php"><td><input type="hidden" name="title" value="'.$row[1].'"><input type="submit" value="Delete"></td></tr></form>';
         //print_r($row);
